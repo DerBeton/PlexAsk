@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+html, body {
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body {
+    color: #fff;
+    display: flex;
+    flex-wrap: no-wrap;
+    align-content: center;
+    justify-content: baseline;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+/* Center the loader */
+/* ######################################### */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 50px !important;
+  height: 50px !important;
+  margin: -75px 0 0 -75px;
+  border: 8px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  border-top: 8px solid #e5a00d;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#pageContent {
+  display: none;
+  margin: auto;
+  width: 600px;
+  overflow: scroll;
+  height: 100vh;
+}
+
+/* Make Scrollbar invisible (Chrome and Safari) */
+#pageContent::-webkit-scrollbar {
+  width: 0 !important
+}
+/* Make scrollbar invisible in IE */
+#pageContent { -ms-overflow-style: none; }
+
+/* ######################################### */
+
+#backgroundImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  background-image: url(img/cpAmerica.jpg);
+}
+
+h1, h2 {
+  /*color: #f9be03;*/
+  color: #fff;
+	font-family:
+}
+
+.formtitle {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#email, #semail {
+	margin-bottom: 0px;
+}
+
+input {
+    width: 98%;
+    border-radius: 5px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.25);
+    box-shadow: none;
+    border: none;
+    color: #fff;
+    padding: 5px;
+		font-size: small;
+}
+
+input[type="submit"] {
+  background-color: #e5a00d;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+input#staffel {
+  width: 15%;
+}
+
+#STbeschreibung {
+  display: block;
+}
+
+p {
+  font-weight: 500;
+}
+
+/* navigation tabs */
+.nav-pills {
+  font-size: 15px;
+  font-weight: 700;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  height: 50px;
+  list-style: none;
+  line-height: 35px;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+
+.nav-pills .nav-link {
+    border-radius: 10px;
+}
+
+nav a {
+    color: #fff;
+}
+
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: #f9be03;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #dfdfdf;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #dfdfdf;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #dfdfdf;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+label#Tbeschreibung {
+    margin-top: 20px;
+}
+
+#beschreibung {
+  margin: 0;
+  padding: 0;
+}
+
+#Fbeschreibung {
+  display: none;
+}
+
+#fthumbnail {
+  margin: 15px 0;
+}
+
+#Sbeschreibung {
+  display: none;
+}
+
+#sthumbnail {
+  margin: 15px 0;
+}
+
+.g-recaptcha {
+    margin-top: 20px;
+}
+
+span {
+  color: #f9be03;
+}
+
+/* Css for formula div */
+#filmWunsch {
+  /*border: 2px solid rgba(69, 87, 98, 0.5);*/
+  border-radius: 10px;
+  background-color: rgba(69, 87, 98, 0.5);
+  margin-top: 10px;
+}
+
+#nfilme {
+
+  padding: 10px;
+
+}
+
+#nserien {
+
+  padding: 10px;
+
+}
+
+
+/* make the poster 100% */
+.poster {
+  width: 100%;
+  border-radius: 5px;
+}
+
+#thumbnail {
+  margin: 20px 0;
+}
+
+
+/* for login page /login/index.php */
+
+#txtPlexLogin {
+  text-align: center;
+}
+
+.txtPlex {
+  font-weight: 600;
+}
+
+#btnPlexLogin {
+
+  /*text-transform: uppercase;
+  font-family: Roboto,Helvetica,sans-serif;*/
+  width: 100%;
+  background-color: #e5a00d;
+  font-weight: 700;
+  font-size: 14px;
+  margin: auto;
+  margin-bottom: 7px;
+
+}
+
+#btnPlexLogin:hover {
+
+  background-color: #f9be03;
+  cursor: pointer;
+
+}
+
+#plexLoginContainer {
+  /* border: 2px solid rgba(69, 87, 98, 0.5); */
+  border-radius: 10px;
+  background-color: rgba(69, 87, 98, 0.5);
+  padding: 10px;
+  margin: auto;
+  width: 600px;
+  margin-top: 10px;
+
+}
+
+/* modal style */
+
+.modal-content {
+	background-color: rgba(51, 56, 60, 0.9);
+}
+
+#modalclose {
+	background-color: #e5a00d;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #filmWunsch {
+        width: 100%;
+    }
+    body {
+      width: auto;
+    }
+    #loader {
+       left: 60%;
+    }
+    #backgroundImage {
+    background-size: cover;
+    overflow: hidden;
+    background: url(img/cpAmerica.jpg) no-repeat center center fixed;
+    }
+}

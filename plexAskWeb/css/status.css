@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+html, body {
+    color: #fff;
+    justify-content: baseline;
+		align-content: center;
+    font-family: 'Open Sans', sans-serif !important;
+		max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+		background-repeat: no-repeat;
+	  background-image: url(img/cpAmerica.jpg);
+	  background-attachment: fixed;
+}
+
+h3 {
+    font-size: 35px !important;
+    text-align: center;
+}
+
+
+#pageContent {
+	margin: auto;
+	max-width: 1000px;
+}
+
+/* Style of Update Button */
+
+#update-button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    height: 40px;
+    width: 7em;
+    margin: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    border-radius: 10px;
+}
+
+/* navigation tabs */
+.nav-pills {
+  width: 600px;
+  margin: 10px auto;
+  font-weight: bold;
+  background-color: rgba(69, 87, 98, 0.5);
+  box-shadow: none;
+  border-radius: 10px;
+  height: 50px;
+  line-height: 35px;
+  vertical-align: middle;
+}
+
+.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: #007bff;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.tab-content {
+    margin-top: 50px;
+
+}
+
+h3 {
+  font-weight: 600;
+}
+
+/* Change film-box color */
+.avatar {
+	background-color: rgba(69, 87, 98, 0.5)!important;
+	border: none !important;
+}
+
+.collection .collection-item.avatar p {
+    /* margin: 0; */
+    margin: 15px 45px 15px 0px;
+
+}
+
+.collection-item {
+		margin-bottom: 10px !important;
+		border: 2px solid rgba(69, 87, 98, 0) !important;
+  	border-radius: 10px !important;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.collection {
+	border: none !important;
+	padding: 0 10px !important;
+}
+
+/* change triangle color */
+.secondary-content {
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #update-button {
+      display: none;
+    }
+    .nav-pills {
+      width: 95%;
+    }
+    .tab-content {
+        width: 100%;
+        margin-top: 25px;
+    }
+    body {
+      width: auto;
+      min-height: 100%;
+    }
+}
