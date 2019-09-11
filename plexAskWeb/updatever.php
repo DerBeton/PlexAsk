@@ -26,8 +26,12 @@
 
 		$remoteRepo = json_decode(file_get_contents("https://api.github.com/repos/DerBeton/PlexAsk/git/trees/update-process", false, $context));
 
-		if ($remoteRepo === true) {
+		if ($remoteRepo === false) {
+		
+			$updateStatus = "api";
 
+		} else {
+		
 			// get plexAskWeb folder url on github api
 			foreach($remoteRepo->tree as $key=>$value) {
 
@@ -38,10 +42,7 @@
 				}
 
 			}
-
-		} else {
-
-			$updateStatus = "api";
+			
 
 		}
 
