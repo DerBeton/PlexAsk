@@ -1,69 +1,27 @@
 <?php
 
   $config = json_decode(file_get_contents("../data/config.json"), true);
-  $localVersion = json_decode(file_get_contents("../version.json"), true);
+  $localVersion = $config['version']['number'];
 
-  if (isset($_GET["token"]) && $_GET['token'] == $config['admin']['token']) {
+  if (isset($_POST["token"]) && $_POST['token'] == $config['admin']['token']) {
 
     $response = array();
 
-    $version = $localVersion['version']['number'];
+    $remoteVersionJson = json_decode(file_get_contents("https://raw.githubusercontent.com/DerBeton/PlexAsk/update-process/plexAskWeb/version.json", false));
 
-    // context for github api otherwise request is rejected
-    $opts = [
-            'http' => [
-                    'method' => 'GET',
-                    'header' => [
-                            'User-Agent: PHP'
-                    ]
-            ]
-    ];
+    $remoteVersion = $remoteVersionJson->version->number;
 
-    $context = stream_context_create($opts);
+    if(version_compare($remoteVersion, $localVersion, ">")) {
 
-    $remoteVersion = json_decode(file_get_contents("https://api.github.com/repos/DerBeton/PlexAsk/git/trees/update-process", true, $context));
-
-    //https://api.github.com/repos/DerBeton/PlexAsk/git/trees/update-process
-
-    foreach ($remoteVersion as $key) {
-
-      print_r($key);
-
-      // code...
-      echo $key['path'];
-
-    }
-
-
-    echo "</br>";
-
-    //print_r($config);
-    //echo $remoteVersion[''];
-
-    $versions = json_decode(file_get_contents("https://updateplex.derbeton.ch/versions.json"), true);
-
-    foreach ($versions['version'] as $accVersion) {
-        $curVersion = $accVersion['number'];
-    }
-
-    if(version_compare($curVersion, $version, ">")) {
-
-
-      //file_put_contents("../updatever.php", fopen("https://updateplex.derbeton.ch/updatever.php.dat", 'r'));
-
-
+      file_put_contents("../updatever.php", fopen("https://raw.githubusercontent.com/DerBeton/PlexAsk/update-process/plexAskWeb/updatever.php", 'r'));
       $response['status'] = 'update';
-      $response['version'] = $curVersion;
+      $response['version'] = $remoteVersion;
 
 
     } else {
 
-
       $response['status'] = 'upToDate';
-      $response['version'] = $version;
-
-
-
+      $response['version'] = $localVersion;
 
     }
 
