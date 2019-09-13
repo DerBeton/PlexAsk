@@ -1,37 +1,27 @@
 <?php
 
   $config = json_decode(file_get_contents("../data/config.json"), true);
+  $localVersion = $config['version']['number'];
 
   if (isset($_POST["token"]) && $_POST['token'] == $config['admin']['token']) {
 
     $response = array();
 
-    $version = $config['version']['number'];
+    $remoteVersionJson = json_decode(file_get_contents("https://raw.githubusercontent.com/DerBeton/PlexAsk/master/plexAskWeb/version.json", false));
 
-    $versions = json_decode(file_get_contents("https://updateplex.derbeton.ch/versions.json"), true);
+    $remoteVersion = $remoteVersionJson->version->number;
 
-    foreach ($versions['version'] as $accVersion) {
-        $curVersion = $accVersion['number'];
-    }
+    if(version_compare($remoteVersion, $localVersion, ">")) {
 
-    if(version_compare($curVersion, $version, ">")) {
-
-
-      file_put_contents("../updatever.php", fopen("https://updateplex.derbeton.ch/updatever.php.dat", 'r'));
-
-
+      file_put_contents("../updatever.php", fopen("https://raw.githubusercontent.com/DerBeton/PlexAsk/master/plexAskWeb/updatever.php", 'r'));
       $response['status'] = 'update';
-      $response['version'] = $curVersion;
+      $response['version'] = $remoteVersion;
 
 
     } else {
 
-
       $response['status'] = 'upToDate';
-      $response['version'] = $version;
-
-
-
+      $response['version'] = $localVersion;
 
     }
 
