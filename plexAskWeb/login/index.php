@@ -72,9 +72,6 @@ https://app.plex.tv/auth/#!?clientID=45d78484-d61d-4f62-9a0b-138fc48d1de6&contex
 
         header('location: ../request/');
 
- 				//echo "Deine Email: " . $xmlUserInfo['email'] . "<br>";
-
- 				//print_r($xmlUserInfo);
 
  			}
 
