@@ -1,11 +1,15 @@
 <?php
 session_start();
+// to clean every output before redirect
+ob_start();
 ?>
 
 <?php
 
 if (!isset($_SESSION['userToken'])) {
 
+  // now clean output
+	ob_end_clean();
   header('location: ../login');
 
 }

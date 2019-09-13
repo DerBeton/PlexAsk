@@ -1,5 +1,7 @@
 <?php
 session_start();
+// to clean every output before redirect
+ob_start();
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +71,9 @@ https://app.plex.tv/auth/#!?clientID=45d78484-d61d-4f62-9a0b-138fc48d1de6&contex
 
 
         $_SESSION['userToken'] = "$authToken";
+
+				// now clean output
+				ob_end_clean();
 
         header('location: ../request/');
 
