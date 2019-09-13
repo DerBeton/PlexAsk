@@ -45,6 +45,7 @@ session_start();
         if ($type == "film") {
 
           $mediatitel = $_POST['filmtitel'];
+          $id = hash("md5", $mediatitel.$_POST['beschreibung']);
 
           if(isOnPlex($mediatitel, $type) == true) {
 
@@ -52,38 +53,14 @@ session_start();
 
           }
 
-          // call putinfilms in filmHandler.php
-
-
+          // call putinfilms in functions.php
           putinfilms("$userEmail");
 
 
           echo "Filmwunsch wurde abgeschickt";
 
-
-          // Paste mail function or whatever else you want to happen here!
-          $to = "ramon.grutschnig@bbz-sh.ch";
-          $subject = "PLEX Neuer Film Antrag";
-          $message = "
-          <html>
-          <head><meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
-          <title>" . $mediatitel . "</title>
-          </head>
-          <body>
-          <h1>" . $mediatitel . "</h1>
-          <p>" . $_POST['beschreibung'] . "</p>
-          </body>
-          </html>
-          ";
-
-          // Always set content-type when sending HTML email
-          $headers = "MIME-Version: 1.0" . "\r\n";
-          $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-          // More headers
-          $headers .= 'From: <info@plexask.ch>' . "\r\n";
-
-          mail($to,$subject,$message,$headers);
+          // call sendMail in functions.php
+          sendMail($userEmail, $id, $mediatitel, "requested");
 
 
         } elseif ($type == "serie") {
@@ -91,6 +68,7 @@ session_start();
 
           $mediatitel = $_POST['serientitel'];
           $staffel = $_POST['staffel'];
+          $id = hash("md5", $mediatitel.$_POST['Sbeschreibung']);
 
           if(isOnPlex($mediatitel, $type) == true) {
 
@@ -99,35 +77,13 @@ session_start();
           }
 
 
-          // call putinfilms in filmHandler.php
+          // call putinseries in functions.php
           putinseries("$userEmail");
 
           echo "Serienwunsch wurde abgeschickt";
 
-          // Paste mail function or whatever else you want to happen here!
-          $to = "ramon.grutschnig@bbz-sh.ch";
-          $subject = "PLEX Neuer Serien Antrag";
-          $message = "
-          <html>
-          <head><meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
-          <title>" . $mediatitel . "</title>
-          </head>
-          <body>
-          <h1>" . $mediatitel . "</h1>
-          <h1> Staffel: " . $staffel . "</h1>
-          <p>" . $_POST['Sbeschreibung'] . "</p>
-          </body>
-          </html>
-          ";
-
-          // Always set content-type when sending HTML email
-          $headers = "MIME-Version: 1.0" . "\r\n";
-          $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-          // More headers
-          $headers .= 'From: <info@plexask.ch>' . "\r\n";
-
-          mail($to,$subject,$message,$headers);
+          // call sendMail in functions.php
+          sendMail($userEmail, $id, $mediatitel, "requested");
 
         }
 

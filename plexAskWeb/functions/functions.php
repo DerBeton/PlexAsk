@@ -88,27 +88,6 @@
 
 	}
 
-
-
-/*
-		$configurationArray = json_decode(file_get_contents("../data/config.json"), true);
-
-		$url = 'https://raymond.gipfelibueb.ch/proxy-raymond.php?token=';
-		$url = urldecode($url);
-		$movies = simplexml_load_file($url) or refreshIP($title);
-		//print_r($movies);
-
-		foreach ($movies as $movie) {
-			if(strtolower($movie['title']) == strtolower($title)){
-					echo "true";
-					return true;
-			}
-
-		}
-
-		//echo "false";
-		return false;*/
-
 	}
 
 	##################################################################################
@@ -209,29 +188,30 @@
 
 			$emailTemplates = array(
 				"requested" => array(
-					"subject" => "PlexAsk | News von deinem Antrag #".$id." für ".$title,
+					"subject" => "PlexAsk | News von deinem Antrag #".$id." für ".$titel,
 					"body" => "
 					<html>
 					<head><meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
 					<title>" . $titel . "</title>
 					</head>
 					<body>
-					<h1>" . $titel . ": Status changed</h1>
-					<p> Der Antrag mit dem Titel " . $titel . ", hat den Status zu '" . $status . "' geändert</p><br /><br />
-					<small>Vielen Dank fuer das entgegengebrachte Vertrauen...</small>
+					<h1>" . $titel . ": Status</h1>
+					<p> Der Antrag mit dem Titel " . $titel . ", wurde zu den gewünschten Anträgen hinzugefügt</p><br /><br />
+					<small>Vielen Dank fuer das entgegengebrachte Vertrauen... &copy;PlexAsk</small>
 					</body>
 					</html>
 					"
 				),
 				"downloading" => array(
-					"subject" => ("PlexAsk | News von deinem Antrag #".$id." für ".$title),
+					"subject" => ("PlexAsk | News von deinem Antrag #".$id." für ".$titel),
 					"body" => "
 					<html>
 					<head><meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
 					<title>Wir arbeiten gerade daran, " . $titel . " für dich zu beschaffen!</title>
 					</head>
 					<body>
-					<p>Wir haben deinen Wunsch erhört und uns sofort an die Arbeit gemacht deinen Antrag mit der Referenz #".$id." zu bearbeiten.</p><br />
+					<h1>Wir arbeiten gerade daran, " . $titel . " für dich zu beschaffen!</h1>
+					<p>Wir haben deinen Wunsch erhört und uns sofort an die Arbeit gemacht deinen Antrag mit dem Namen <b>". $titel ."</b> (Referenz #".$id.") zu bearbeiten.</p><br />
 					<p>Du erhälst weitere Informationen sobald der Film auf dem Plex auffindbar ist.</p><br /><br />
 					<small>Vielen Dank fuer das entgegengebrachte Vertrauen... &copy;PlexAsk</small>
 					</body>
@@ -239,36 +219,38 @@
 					"
 				),
 				"finished" => array(
-					"subject" => ("PlexAsk | News von deinem Antrag #".$id." für ".$title),
+					"subject" => ("PlexAsk | News von deinem Antrag #".$id." für ".$titel),
 					"body" => "
 					<html>
 					<head><meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
 					<title>Wir haben gute Neuigkeiten!</title>
 					</head>
 					<body>
-					<p>Dein Antrag mit der Referenz #".$id." wurde erfolgreich bearbeitet. Du solltest in Kürze auf die gewünschte Ressource zugreifen können.</p><br /><br />
+					<h1>Wir haben gute Neuigkeiten!</h1>
+					<p>Dein Antrag mit dem Namen <b>". $titel ."</b> (Referenz #".$id.") wurde erfolgreich bearbeitet. Du solltest in Kürze auf die gewünschte Ressource zugreifen können.</p><br /><br />
 					<small>Vielen Dank fuer das entgegengebrachte Vertrauen... &copy;PlexAsk</small>
 					</body>
 					</html>
 					"),
 					"deleted" => array(
-						"subject" => ("PlexAsk | News von deinem Antrag #".$id." für ".$title),
-						"body" => "
-						<html>
+						"subject" => ("PlexAsk | News von deinem Antrag #".$id." für ".$titel),
+						"body" =>
+						"<html>
 						<head><meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
 						<title>Leider mussten wir Ihren Antrag abweisen</title>
 						</head>
 						<body>
-						<p>Dein Antrag mit der Referenz #".$id." wurde abgelehnt. Sollte es sich um ein Missverständnis handeln, melde dich bitte bei uns: ".$configurationArray['email']['address']."</p><br /><br />
+						<h1>Leider mussten wir Ihren Antrag abweisen</h1>
+						<p>Dein Antrag mit dem Namen <b>". $titel ."</b> (Referenz #".$id.") wurde abgelehnt. Sollte es sich um ein Missverständnis handeln, melde dich bitte bei uns: ".$configurationArray['email']['address']."</p><br /><br />
 						<small>Vielen Dank fuer das entgegengebrachte Vertrauen... &copy;PlexAsk</small>
 						</body>
-						</html>
-						")
+						</html>"
+						)
 				);
 
 
 			$subject = $emailTemplates[$status]["subject"];
-			$message = $emailTemplates[$status]["subject"];
+			$message = $emailTemplates[$status]["body"];
 
 
 			$headers = "MIME-Version: 1.0" . "\r\n";
