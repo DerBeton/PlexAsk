@@ -24,14 +24,14 @@
 		];
 		$context = stream_context_create($opts);
 
-		$remoteRepo = json_decode(file_get_contents("https://api.github.com/repos/DerBeton/PlexAsk/git/trees/update-process", false, $context));
+		$remoteRepo = json_decode(file_get_contents("https://api.github.com/repos/DerBeton/PlexAsk/git/trees/master", false, $context));
 
 		if ($remoteRepo === false) {
-		
+
 			$updateStatus = "api";
 
 		} else {
-		
+
 			// get plexAskWeb folder url on github api
 			foreach($remoteRepo->tree as $key=>$value) {
 
@@ -42,7 +42,7 @@
 				}
 
 			}
-			
+
 
 		}
 
@@ -206,7 +206,7 @@
 
 	function downloadFile(String $file,String $path) {
 
-		file_put_contents($path.$file, fopen("https://raw.githubusercontent.com/DerBeton/PlexAsk/update-process/plexAskWeb/".$path.$file, "r"));
+		file_put_contents($path.$file, fopen("https://raw.githubusercontent.com/DerBeton/PlexAsk/master/plexAskWeb/".$path.$file, "r"));
 
 		echo "File " . $file . " wurde auf den neusten Stand gebracht";
 		echo "</br>";

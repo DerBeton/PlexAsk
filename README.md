@@ -14,3 +14,6 @@
 Laden sie die index.php am gewünschten Ort ab und konfigurieren sie die Anwendung direkt über das Webgui.
 
 **Changelog**
+
+- **Version 1:**
+ - **1.1.2:** Updateprozess über GitHub / Design harmonisierung / Überprüft jetzt, ob Film / Serie schon auf dem Plex vorhanden ist.

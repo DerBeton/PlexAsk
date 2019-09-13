@@ -7,13 +7,13 @@
 
     $response = array();
 
-    $remoteVersionJson = json_decode(file_get_contents("https://raw.githubusercontent.com/DerBeton/PlexAsk/update-process/plexAskWeb/version.json", false));
+    $remoteVersionJson = json_decode(file_get_contents("https://raw.githubusercontent.com/DerBeton/PlexAsk/master/plexAskWeb/version.json", false));
 
     $remoteVersion = $remoteVersionJson->version->number;
 
     if(version_compare($remoteVersion, $localVersion, ">")) {
 
-      file_put_contents("../updatever.php", fopen("https://raw.githubusercontent.com/DerBeton/PlexAsk/update-process/plexAskWeb/updatever.php", 'r'));
+      file_put_contents("../updatever.php", fopen("https://raw.githubusercontent.com/DerBeton/PlexAsk/master/plexAskWeb/updatever.php", 'r'));
       $response['status'] = 'update';
       $response['version'] = $remoteVersion;
 
