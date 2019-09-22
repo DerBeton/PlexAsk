@@ -245,7 +245,7 @@ if(!is_file("../data/.htaccess")){
 							"crossDomain": true,
 							"dataType": 'json',
 							"url": "https://api.themoviedb.org/3/search/movie?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + inputValue + "&language=de",
-							"method": "POST",
+							"method": "GET",
 							"headers": {},
 							"data": JSON.stringify(settings)
 						}
@@ -292,7 +292,7 @@ if(!is_file("../data/.htaccess")){
 							"crossDomain": true,
 							"dataType": 'json',
 							"url": "https://api.themoviedb.org/3/search/tv?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + inputValue + "&language=de",
-							"method": "POST",
+							"method": "GET",
 							"headers": {},
 							"data": JSON.stringify(settings)
 						}
@@ -368,7 +368,7 @@ if(!is_file("../data/.htaccess")){
 									"crossDomain": true,
 									"dataType": 'json',
 									"url": "https://api.themoviedb.org/3/search/movie?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + devFilmTitel + "&language=de",
-									"method": "POST",
+									"method": "GET",
 									"headers": {},
 									"data": JSON.stringify(devFilmSettings)
 							}
@@ -417,7 +417,7 @@ if(!is_file("../data/.htaccess")){
 												"crossDomain": true,
 												"dataType": 'json',
 												"url": "https://api.themoviedb.org/3/search/tv?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + devSerienTitel + "&language=de",
-												"method": "POST",
+												"method": "GET",
 												"headers": {},
 												"data": JSON.stringify(devSerienSettings)
 										}
