@@ -245,7 +245,7 @@ if(!is_file("../data/.htaccess")){
 							"crossDomain": true,
 							"dataType": 'json',
 							"url": "https://api.themoviedb.org/3/search/movie?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + inputValue + "&language=de",
-							"method": "POST",
+							"method": "GET",
 							"headers": {},
 							"data": JSON.stringify(settings)
 						}
@@ -292,7 +292,7 @@ if(!is_file("../data/.htaccess")){
 							"crossDomain": true,
 							"dataType": 'json',
 							"url": "https://api.themoviedb.org/3/search/tv?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + inputValue + "&language=de",
-							"method": "POST",
+							"method": "GET",
 							"headers": {},
 							"data": JSON.stringify(settings)
 						}
@@ -368,7 +368,7 @@ if(!is_file("../data/.htaccess")){
 									"crossDomain": true,
 									"dataType": 'json',
 									"url": "https://api.themoviedb.org/3/search/movie?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + devFilmTitel + "&language=de",
-									"method": "POST",
+									"method": "GET",
 									"headers": {},
 									"data": JSON.stringify(devFilmSettings)
 							}
@@ -379,7 +379,7 @@ if(!is_file("../data/.htaccess")){
 								$.ajax(devFilmSettings).done(function (response) {
 
 									var devFilm = response.results[0];
-													$(".poster").remove();
+													$("#mPoster").remove();
 
 													$("#filmid").val(devFilm.id);
 
@@ -388,7 +388,7 @@ if(!is_file("../data/.htaccess")){
 													$('#f_beschreibung').html(devFilm.overview);
 													var thumbnail = "https://image.tmdb.org/t/p/w500/" + devFilm.poster_path;
 
-													var poster = $("<img class='poster' src=" + thumbnail + "></img>");
+													var poster = $("<img class='poster' id='mPoster' src=" + thumbnail + "></img>");
 													$("#fthumbnail").append(poster);
 
 													// Beschreibung für E-Mail definieren
@@ -417,7 +417,7 @@ if(!is_file("../data/.htaccess")){
 												"crossDomain": true,
 												"dataType": 'json',
 												"url": "https://api.themoviedb.org/3/search/tv?api_key=<?php $tmdb = json_decode(file_get_contents("../data/config.json"), true); echo $tmdb['tmdb']['token'] ?>&query=" + devSerienTitel + "&language=de",
-												"method": "POST",
+												"method": "GET",
 												"headers": {},
 												"data": JSON.stringify(devSerienSettings)
 										}
@@ -428,7 +428,7 @@ if(!is_file("../data/.htaccess")){
 											$.ajax(devSerienSettings).done(function (response) {
 
 												var devSerie = response.results[0];
-																$(".poster").remove();
+																$("#sPoster").remove();
 
 																$("#seriesid").val(devSerie.id);
 
@@ -437,7 +437,7 @@ if(!is_file("../data/.htaccess")){
 																$('#s_beschreibung').html(devSerie.overview);
 																var thumbnail = "https://image.tmdb.org/t/p/w500/" + devSerie.poster_path;
 
-																var poster = $("<img class='poster' src=" + thumbnail + "></img>");
+																var poster = $("<img class='poster' id='sPoster' src=" + thumbnail + "></img>");
 																$("#sthumbnail").append(poster);
 
 																// Beschreibung für E-Mail definieren
