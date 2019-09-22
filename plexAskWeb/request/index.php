@@ -379,7 +379,7 @@ if(!is_file("../data/.htaccess")){
 								$.ajax(devFilmSettings).done(function (response) {
 
 									var devFilm = response.results[0];
-													$(".poster").remove();
+													$("#mPoster").remove();
 
 													$("#filmid").val(devFilm.id);
 
@@ -388,7 +388,7 @@ if(!is_file("../data/.htaccess")){
 													$('#f_beschreibung').html(devFilm.overview);
 													var thumbnail = "https://image.tmdb.org/t/p/w500/" + devFilm.poster_path;
 
-													var poster = $("<img class='poster' src=" + thumbnail + "></img>");
+													var poster = $("<img class='poster' id='mPoster' src=" + thumbnail + "></img>");
 													$("#fthumbnail").append(poster);
 
 													// Beschreibung für E-Mail definieren
@@ -428,7 +428,7 @@ if(!is_file("../data/.htaccess")){
 											$.ajax(devSerienSettings).done(function (response) {
 
 												var devSerie = response.results[0];
-																$(".poster").remove();
+																$("#sPoster").remove();
 
 																$("#seriesid").val(devSerie.id);
 
@@ -437,7 +437,7 @@ if(!is_file("../data/.htaccess")){
 																$('#s_beschreibung').html(devSerie.overview);
 																var thumbnail = "https://image.tmdb.org/t/p/w500/" + devSerie.poster_path;
 
-																var poster = $("<img class='poster' src=" + thumbnail + "></img>");
+																var poster = $("<img class='poster' id='sPoster' src=" + thumbnail + "></img>");
 																$("#sthumbnail").append(poster);
 
 																// Beschreibung für E-Mail definieren
