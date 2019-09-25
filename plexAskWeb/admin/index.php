@@ -23,6 +23,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link href="../css/status.css" type="text/css" rel="stylesheet" />
+        <link href="../customize.css" type="text/css" rel="stylesheet" />
         <!-- Set tab logo -->
 				<link rel="db icon" href="../css/img/DB.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
