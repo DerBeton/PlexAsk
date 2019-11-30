@@ -38,7 +38,6 @@ if(!is_file("../data/.htaccess")){
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <!-- include own css -->
         <link href="../css/style.css" type="text/css" rel="stylesheet" />
-				<link href="../customize.css" type="text/css" rel="stylesheet" />
 				<!-- include the google rechaptcha script -->
 				<script src='https://www.google.com/recaptcha/api.js'></script>
 				<!-- include vue.js :) -->
@@ -109,7 +108,7 @@ if(!is_file("../data/.htaccess")){
 
 								<!-- Datalist für Filmtitel -->
 								<datalist id="filme">
-										<option value="tippen um Vorschläge zu laden" disabled>
+										<option class="dropdown-list" value="tippen um Vorschläge zu laden" disabled>
 								</datalist>
 
 
@@ -147,7 +146,7 @@ if(!is_file("../data/.htaccess")){
 
 								<!-- Datalist für Serientitel -->
 								<datalist id="serien">
-										<option value="tippen um Vorschläge zu laden" disabled>
+										<option class="dropdown-list" value="tippen um Vorschläge zu laden" disabled>
 								</datalist>
 
 							</div>
@@ -275,7 +274,7 @@ if(!is_file("../data/.htaccess")){
 											option.value = value.title;
 											// <option> Element der <datalist> hinzufügen.
 											// <option> Element die Klasse "filmOption" geben (fürs Löschen).
-											option.className = "filmOption";
+											option.className = "filmOption dropdown-list";
 											// <option> Element der <datalist> hinzufügen.
 											dataList.appendChild(option);
 
@@ -320,7 +319,7 @@ if(!is_file("../data/.htaccess")){
 											option.value = value.name;
 											// <option> Element der <datalist> hinzufügen.
 											// <option> Element die Klasse "filmOption" geben (fürs Löschen).
-											option.className = "filmOption";
+											option.className = "filmOption dropdown-list";
 											// <option> Element der <datalist> hinzufügen.
 											dataList.appendChild(option);
 
