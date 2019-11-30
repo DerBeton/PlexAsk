@@ -2,9 +2,9 @@
 html, body {
     max-height: 100%;
     max-width: 100%;
-    overflow: hidden;
     height: 100%;
     width: 100%;
+    overflow: hidden;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -18,7 +18,14 @@ body {
     justify-content: baseline;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+    background-image: url(img/cpAmerica.jpg);
+    overflow-y: scroll;
 }
+
+/* Hide Scrollbars */
+body::-webkit-scrollbar { width: 0 !important }
+body { overflow: -moz-scrollbars-none; }
+body { -ms-overflow-style: none; }
 
 /* Center the loader */
 /* ######################################### */
@@ -53,8 +60,7 @@ body {
   display: none;
   margin: auto;
   width: 600px;
-  overflow: scroll;
-  height: 100vh;
+  height: 100%;
 }
 
 /* Make Scrollbar invisible (Chrome and Safari) */
@@ -75,7 +81,7 @@ body {
 h1, h2 {
   /*color: #f9be03;*/
   color: #fff;
-	font-family:
+	font-family: 'Open Sans', sans-serif;
 }
 
 .formtitle {
@@ -104,6 +110,15 @@ input {
     color: #fff;
     padding: 5px;
 		font-size: small;
+}
+
+.dropdown-list {
+    color: black !important;
+}
+
+select option {
+  background: white !important;
+    color: black !important;
 }
 
 input[type="submit"] {
@@ -225,6 +240,7 @@ span {
   border-radius: 10px;
   background-color: rgba(69, 87, 98, 0.5);
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #nfilme {
@@ -289,6 +305,8 @@ span {
   margin: auto;
   width: 600px;
   margin-top: 10px;
+  /* because of microsoft internet Explorer height */
+  display: inline-table;
 
 }
 

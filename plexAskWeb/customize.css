@@ -1,6 +1,0 @@
-
-body {
-  background-image: url(img/bg.jpg);
-  -webkit-backdrop-filter: blur(5px); /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
-  backdrop-filter: blur(5px); /* Supported in Chrome 76 */
-}

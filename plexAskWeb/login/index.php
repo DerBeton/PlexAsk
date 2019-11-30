@@ -20,7 +20,6 @@ ob_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- include own css -->
     <link href="../css/style.css" type="text/css" rel="stylesheet" />
-		<link href="../customize.css" type="text/css" rel="stylesheet" />
     <!-- include the google rechaptcha script -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- include vue.js :) -->
