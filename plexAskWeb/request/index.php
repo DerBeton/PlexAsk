@@ -14,12 +14,39 @@ if (!isset($_SESSION['userToken'])) {
 
 }
 
+$userToken = $_SESSION['userToken'];
+
+//get email with userToken
+$userUrl = "https://plex.tv/users/account?X-Plex-Token=" . $userToken;
+$xmlUserInfo = simplexml_load_file($userUrl) or die("user xml not able to load");
+
+$_SESSION['userEmail'] = (string) $xmlUserInfo['email'];
+
+
+
+
 // Get Plex Films: http://IP:Port/library/sections/1/all?X-Plex-Token={TOKEN}
 // Get Plex IP: https://plex.tv/pms/resources/?X-Plex-Token={TOKEN}&includeHttps=1
 
 // Check htaccess for security
 if(!is_file("../data/.htaccess")){
   file_put_contents("../data/.htaccess", "Order allow,deny\nDeny from all");
+}
+
+// make Admin button
+function addAdminButton() {
+
+	$config = json_decode(file_get_contents("../data/config.json"), true);
+
+	if(isset($config['admin']['email']) && strtolower($config['admin']['email']) == strtolower($_SESSION['userEmail'])) {
+
+		// admin Button
+		echo '<div id="d-admin">';
+		echo '<input id="admin-button" type="button" value="Admin Panel" />';
+		echo '</div>';
+
+	}
+
 }
 
 ?>
@@ -69,6 +96,8 @@ if(!is_file("../data/.htaccess")){
 			<div id="loader"></div>
 
 			<div style="display:none;" id="pageContent">
+
+				<?php addAdminButton(); ?>
 
 
 				<div id="filmWunsch">
@@ -192,6 +221,12 @@ if(!is_file("../data/.htaccess")){
       	<!-- Beginn der Scripts -->
         <script>
 				"use strict";
+
+
+				// Admin Button click
+				$('#admin-button').click(function() {
+					window.location.href='../admin/';
+				});
 
 
 

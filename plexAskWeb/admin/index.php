@@ -1,12 +1,24 @@
 <?php
-    $token = $_GET['t'];
+session_start();
+
+  $isAdmin = false;
+
     $config = json_decode(file_get_contents("../data/config.json"), true);
     $version = $config['version']['number'];
     echo "<script>console.log( 'PlexAsk Version: " . $version . "' )</script>";
 
-    if($token == $config['admin']['token']) {
+    if(isset($_SESSION['userEmail']) && strtolower($_SESSION['userEmail']) == strtolower($config['admin']['email'])) {
+      $isAdmin = true;
     } else {
-      header('Location: ../request/index.php');
+
+      if(isset($_GET['t']) && $_GET['t'] == $config['admin']['token']) {
+        $isAdmin = true;
+      }
+
+    }
+
+    if($isAdmin == false) {
+      header('Location: ../request/');
       die();
     }
 
@@ -42,9 +54,14 @@
 
 ?>
 
+      <!-- Formular Button -->
+      <div id="d-formular">
+          <input class="action-button" id="formular-button" type="button" value="Formular" />
+      </div>
+
       <!-- Update Button -->
       <div id="d-update">
-          <input id="update-button" type="button" value="Update!" />
+          <input class="action-button" id="update-button" type="button" value="Update!" />
       </div>
 
       <!-- Ceate Tabs -->
@@ -181,6 +198,12 @@
         var elems = document.querySelectorAll('.tooltipped');
         var instances = M.Tooltip.init(elems);
         });
+        </script>
+
+        <script type="text/javascript">
+            $("#formular-button").click(function(){
+              window.location.href = "../request/";
+            });
         </script>
 
         <!-- get last opened tab -->
