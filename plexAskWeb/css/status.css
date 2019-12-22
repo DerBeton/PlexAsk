@@ -12,6 +12,7 @@ html, body {
     -o-background-size: cover;
     background-size: cover;
 		background-repeat: no-repeat;
+	  background-image: url(img/cpAmerica.jpg);
 	  background-attachment: fixed;
 }
 
@@ -26,21 +27,33 @@ h3 {
 	max-width: 1000px;
 }
 
+/* general action buttons */
+.action-button {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  height: 40px;
+  width: 7em;
+  margin: 10px;
+  position: absolute;
+  border: none;
+  border-radius: 10px;
+}
+
+
+/* Style of Formular Button */
+
+#formular-button {
+  left: 0;
+  top: 0;
+}
+
 /* Style of Update Button */
 
 #update-button {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    height: 40px;
-    width: 7em;
-    margin: 10px;
-    position: absolute;
     right: 0;
     top: 0;
-    border: none;
-    border-radius: 10px;
 }
 
 /* navigation tabs */
