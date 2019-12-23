@@ -39,7 +39,7 @@ session_start();
 				<link rel="db icon" href="../css/img/DB.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="utf-8"/>
-        <title>Raymond</title>
+        <title>PlexAsk</title>
     </head>
     <body>
 
@@ -193,6 +193,10 @@ session_start();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- SweetAlert Javascript -->
+				<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- own functions js -->
+			  <script src="../js/functions.js"></script>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.tooltipped');
@@ -216,6 +220,9 @@ session_start();
             if(activeTab){
                 $('#myTab a[href="' + activeTab + '"]').tab('show');
             }
+
+            // check Admin Mail
+  					checkAdminMail();
 
             // check for Update Button
             $("#update-button").click(function(){
@@ -281,6 +288,42 @@ session_start();
             });
 
           }
+
+          // check Admin Mail
+					function checkAdminMail(){
+						$.ajax({
+                method: "post",
+                url: "../functions/functions.php",
+								data: {
+									action: "checkAdminMail"
+								},
+                success: function(result){
+									// get data array from response
+                  var data = $.parseJSON(result);
+									if(data.mailSet == false) {
+
+										swal({
+											title: "Admin Email angeben",
+											text: 'Bitte gebe die Mailadresse des Admin Accounts an (Gleiche Mail wie bei Plex Account)',
+											content: "input",
+											button: {
+												text: "Speichern",
+												closeModal: true,
+											},
+										}).then(name => {
+											if (!name) throw null;
+											// save input to config
+											writeToJson("admin", "email", name);
+										})
+									}
+								},
+								error: function(result){
+								console.log("Konnte Admin Mail nicht überprüfen");
+							}
+						});
+					}
+
+
         </script>
 
     </body>

@@ -1,5 +1,8 @@
 <?php
 
+// skip warnings
+error_reporting(E_ERROR | E_PARSE);
+
 
 	// List PHP errors
 /*
@@ -8,8 +11,18 @@
 		error_reporting(E_ALL);
 */
 
-
-
+	if(isset($_POST['action'])) {
+		switch($_POST['action']) {
+			case "checkAdminMail":
+				checkAdminMail();
+				break;
+			case "writeToJson":
+				writeToJson($_POST['keyOne'],$_POST['keyTwo'],$_POST['value']);
+				break;
+			default:
+				break;
+		}
+	}
 
 	##################################################################################
 
@@ -262,6 +275,55 @@
 			$headers .= 'From: <'.$sender.'>' . "\r\n";
 
 			mail($to,$subject,$message,$headers);
+
+		}
+
+		##################################################################################
+
+													// Check Plex Admin Mail //
+
+		##################################################################################
+
+		function checkAdminMail(){
+
+			// get config
+			try {
+				$config = json_decode(file_get_contents("../data/config.json"), true);
+	    	$adminMail = $config['admin']['email'];
+			} catch (Exception $e) {
+			    $response['mailSet'] = false;
+			}
+
+
+			// check for admin mail
+			if(isset($adminMail)) {
+				$response['mailSet'] = true;
+			} else {
+				$response['mailSet'] = false;
+			}
+
+			echo json_encode($response);
+
+		}
+
+		##################################################################################
+
+													// Write to json //
+
+		##################################################################################
+
+		function writeToJson($keyOne, $keyTwo, $value){
+
+			// get config
+			$config = json_decode(file_get_contents("../data/config.json"), true);
+    	$config['admin']['email'] = $value;
+			if(file_put_contents("../data/config.json",json_encode($config))) {
+				$response['mailSaved'] = true;
+			} else {
+				$response['mailSaved'] = false;
+			}
+
+			echo json_encode($response);
 
 		}
 
