@@ -82,13 +82,16 @@ session_start();
 
                     <?php foreach($films as $id => $film){ if($film['status'] != "requested"){continue;}?>
 
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle red tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$film['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $film['requestTime'])."<br />Email: ".$film['email'] ?>">new_releases</i>
-                      <span class="title"><?php echo $film['filmtitel'] ?></span>
-                      <p><?php echo  $film["Fbeschreibung"] ?></p>
-                      <p>Download Link: <?php echo  "<a target='_blank' href=".$film['downloadLink'] . ">" . $film["downloadLink"] . "</a>"?></p>
-                      <a href="#!" class="secondary-content"><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','deleted')">delete_forever</i><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','downloading')">keyboard_arrow_down</i></a>
-                    </li>
+										<li class="collection-item avatar">
+												<i class="material-icons circle red tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$film['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $film['requestTime'])."<br />Email: ".$film['email'] ?>">new_releases</i>
+												<div class="toggle">
+													<span class="title"><?php echo $film['filmtitel'] ?></span>
+												</div>
+												<div class="inner">
+													<p><?php echo  $film["Fbeschreibung"] ?></p>
+												</div>
+												<a href="#!" class="secondary-content"><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','deleted')">delete_forever</i><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','downloading')">keyboard_arrow_down</i></a>
+										</li>
 
                     <?php } ?>
                 </ul>
@@ -100,8 +103,12 @@ session_start();
 
                     <li class="collection-item avatar">
                         <i class="material-icons circle yellow tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$film['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $film['requestTime'])."<br />Email: ".$film['email'] ?>">file_download</i>
-                      <span class="title"><?php echo $film['filmtitel'] ?></span>
-                      <p><?php echo  $film["Fbeschreibung"] ?></p>
+                      <div class="toggle">
+													<span class="title"><?php echo $film['filmtitel'] ?></span>
+												</div>
+												<div class="inner">
+													<p><?php echo  $film["Fbeschreibung"] ?></p>
+												</div>
                       <a href="#!" class="secondary-content"><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','requested')">keyboard_arrow_up</i><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','finished')">keyboard_arrow_down</i></a>
                     </li>
 
@@ -114,9 +121,13 @@ session_start();
                     <?php foreach($films as $id => $film){ if($film['status'] != "finished"){continue;}?>
 
                     <li class="collection-item avatar">
-                        <i class="material-icons circle green tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$film['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $film['requestTime'])."<br />Email: ".$film['email'] ?>">offline_pin</i>
-                      <span class="title"><?php echo $film['filmtitel'] ?></span>
-                      <p><?php echo  $film["Fbeschreibung"] ?></p>
+                      <i class="material-icons circle green tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$film['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $film['requestTime'])."<br />Email: ".$film['email'] ?>">offline_pin</i>
+                      <div class="toggle">
+												<span class="title"><?php echo $film['filmtitel'] ?></span>
+											</div>
+											<div class="inner">
+												<p><?php echo  $film["Fbeschreibung"] ?></p>
+											</div>
                       <a href="#!" class="secondary-content"><i class="material-icons" onclick="setfStatus('<?php echo $id ?>','downloading')">keyboard_arrow_up</i></a>
                     </li>
 
@@ -137,9 +148,13 @@ session_start();
                     <?php foreach($series as $id => $serie){ if($serie['status'] != "requested"){continue;}?>
 
                     <li class="collection-item avatar">
-                        <i class="material-icons circle red tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$serie['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $serie['requestTime'])."<br />Email: ".$serie['email'] ?>">new_releases</i>
-                      <span class="title"><?php echo $serie['serientitel'] ?> - Staffel <?php echo $serie['staffel'] ?></span>
-                      <p><?php echo  $serie["Sbeschreibung"] ?></p>
+                      <i class="material-icons circle red tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$serie['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $serie['requestTime'])."<br />Email: ".$serie['email'] ?>">new_releases</i>
+                      <div class="toggle">
+												<span class="title"><?php echo $serie['serientitel'] ?> - Staffel <?php echo $serie['staffel'] ?></span>
+											</div>
+											<div class="inner">
+												<p><?php echo  $serie["Sbeschreibung"] ?></p>
+											</div>
                       <a href="#!" class="secondary-content"><i class="material-icons" onclick="setsStatus('<?php echo $id ?>','deleted')">delete_forever</i><i class="material-icons" onclick="setsStatus('<?php echo $id ?>','downloading')">keyboard_arrow_down</i></a>
                     </li>
 
@@ -152,9 +167,13 @@ session_start();
                     <?php foreach($series as $id => $serie){ if($serie['status'] != "downloading"){continue;}?>
 
                     <li class="collection-item avatar">
-                        <i class="material-icons circle yellow tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$serie['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $serie['requestTime'])."<br />Email: ".$serie['email'] ?>">file_download</i>
-                      <span class="title"><?php echo $serie['serientitel'] ?> - Staffel <?php echo $serie['staffel'] ?></span>
-                      <p><?php echo  $serie["Sbeschreibung"] ?></p>
+                      <i class="material-icons circle yellow tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$serie['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $serie['requestTime'])."<br />Email: ".$serie['email'] ?>">file_download</i>
+                      <div class="toggle">
+												<span class="title"><?php echo $serie['serientitel'] ?> - Staffel <?php echo $serie['staffel'] ?></span>
+											</div>
+											<div class="inner">
+												<p><?php echo  $serie["Sbeschreibung"] ?></p>
+											</div>
                       <a href="#!" class="secondary-content"><i class="material-icons" onclick="setsStatus('<?php echo $id ?>','requested')">keyboard_arrow_up</i><i class="material-icons" onclick="setsStatus('<?php echo $id ?>','finished')">keyboard_arrow_down</i></a>
                     </li>
 
@@ -167,9 +186,13 @@ session_start();
                     <?php foreach($series as $id => $serie){ if($serie['status'] != "finished"){continue;}?>
 
                     <li class="collection-item avatar">
-                        <i class="material-icons circle green tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$serie['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $serie['requestTime'])."<br />Email: ".$serie['email'] ?>">offline_pin</i>
-                      <span class="title"><?php echo $serie['serientitel'] ?> - Staffel <?php echo $serie['staffel'] ?></span>
-                      <p><?php echo  $serie["Sbeschreibung"] ?></p>
+                      <i class="material-icons circle green tooltipped" data-position="right" data-tooltip="<?php echo "IP: ".$serie['requestIp']."<br />Zeit: ".date('H:i d/m/Y', $serie['requestTime'])."<br />Email: ".$serie['email'] ?>">offline_pin</i>
+                      <div class="toggle">
+												<span class="title"><?php echo $serie['serientitel'] ?> - Staffel <?php echo $serie['staffel'] ?></span>
+											</div>
+											<div class="inner">
+												<p><?php echo  $serie["Sbeschreibung"] ?></p>
+											</div>
                       <a href="#!" class="secondary-content"><i class="material-icons" onclick="setsStatus('<?php echo $id ?>','downloading')">keyboard_arrow_up</i></a>
                     </li>
 
