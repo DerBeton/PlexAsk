@@ -39,13 +39,13 @@ function writeToJson(keyOne, keyTwo, value) {
 				var data = $.parseJSON(result);
 				// get data array from response
 				if(data.mailSaved == true) {
-					swal({
+					Swal.fire({
 						title: "Email gespeichert!",
 						text: "Email Adresse wurde erfolgreich als berechtigter Admin Account hinzugefügt.",
 						button: "Schliessen",
 					});
 				} else {
-					swal({
+					Swal.fire({
 						title: "Email nicht gespeichert",
 						text: "Email Adresse konnte nicht gespeichert werden.",
 						button: "Schliessen",
@@ -53,7 +53,7 @@ function writeToJson(keyOne, keyTwo, value) {
 				}
 			},
 			error: function(result){
-				swal({
+				Swal.fire({
 					title: "Email nicht gespeichert",
 					text: "Email Adresse konnte nicht gespeichert werden.",
 					button: "Schliessen",

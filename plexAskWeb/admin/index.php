@@ -325,10 +325,6 @@ session_start();
             // when email is set
             if (email) {
               writeToJson("admin", "email", email.toLowerCase());
-              Swal.fire({
-                title: 'Email gespeichert!',
-                text: 'Email: ' + email.toLowerCase() + ' erfolgreich gespeichert.'
-              });
             }
 
           }
