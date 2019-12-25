@@ -117,6 +117,52 @@ h3 {
     color: #fff !important;
 }
 
+/* sweet alert 2 */
+.swal2-modal {
+  background-color: rgba(69, 87, 98, 0.5) !important;
+  border-radius: 10px;
+}
+.swal2-button {
+	background-color: #e5a00d;
+}
+
+#swal2-content {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.swal2-confirm {
+  background-color: #e5a00d !important;
+}
+
+.swal2-confirm:hover {
+  background-color: #f9be03 !important;
+}
+
+.swal2-confirm {
+  background-color: #e5a00d !important;
+}
+
+
+
+button:focus {
+    outline: none;
+    background-color: #f9be03;
+}
+
+.swal2-button:not([disabled]):hover {
+  background-color: #f9be03;
+}
+
+.swal2-button:active {
+  background-color: #f9be03;
+}
+
+.swal2-title, .swal2-text, .swal2-content, .swal2-footer, .swal2-content__input {
+	color: white;
+}
+
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     #update-button {

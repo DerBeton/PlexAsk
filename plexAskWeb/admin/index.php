@@ -193,8 +193,8 @@ session_start();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <!-- SweetAlert Javascript -->
-				<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- SweetAlert 2 Javascript -->
+				<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <!-- own functions js -->
 			  <script src="../js/functions.js"></script>
         <script>
@@ -302,19 +302,8 @@ session_start();
                   var data = $.parseJSON(result);
 									if(data.mailSet == false) {
 
-										swal({
-											title: "Admin Email angeben",
-											text: 'Bitte gebe die Mailadresse des Admin Accounts an (Gleiche Mail wie bei Plex Account)',
-											content: "input",
-											button: {
-												text: "Speichern",
-												closeModal: true,
-											},
-										}).then(name => {
-											if (!name) throw null;
-											// save input to config
-											writeToJson("admin", "email", name);
-										})
+                    enterAdminMail();
+
 									}
 								},
 								error: function(result){
@@ -322,6 +311,27 @@ session_start();
 							}
 						});
 					}
+
+          // ask for admin Mail function()
+          async function enterAdminMail() {
+
+            const { value: email } = await Swal.fire({
+              title: 'Admin Email angeben',
+              text: 'Bitte gebe die Mailadresse des Admin Accounts an (Gleiche Mail wie bei Plex Account)',
+              input: 'email',
+              inputPlaceholder: 'Email Adresse angeben',
+              confirmButtonText: "Speichern!"
+            })
+            // when email is set
+            if (email) {
+              writeToJson("admin", "email", email.toLowerCase());
+              Swal.fire({
+                title: 'Email gespeichert!',
+                text: 'Email: ' + email.toLowerCase() + ' erfolgreich gespeichert.'
+              });
+            }
+
+          }
 
 
         </script>
