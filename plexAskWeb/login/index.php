@@ -1,4 +1,7 @@
 <?php
+if(isset($_SESSION)) {
+	session_destroy();
+}
 session_start();
 // to clean every output before redirect
 ob_start();
