@@ -1,26 +1,37 @@
 <?php
 session_start();
 
-  $isAdmin = false;
+require "../functions/authCheck.php";
 
-    $config = json_decode(file_get_contents("../data/config.json"), true);
-    $version = $config['version']['number'];
-    echo "<script>console.log( 'PlexAsk Version: " . $version . "' )</script>";
+if (adminPanel() !== true) {
+  header('Location: ../request/');
+  die();
+}
 
-    if(isset($_SESSION['userEmail']) && strtolower($_SESSION['userEmail']) == strtolower($config['admin']['email'])) {
-      $isAdmin = true;
-    } else {
+// make Update button
+function addUpdateButton() {
 
-      if(isset($_GET['t']) && $_GET['t'] == $config['admin']['token']) {
-        $isAdmin = true;
-      }
+	if(isAdmin() == true) {
+		// update Button
+		echo '<div id="d-update">';
+		echo '<input class="action-button" id="update-button" type="button" value="Update!" />';
+		echo '</div>';
 
-    }
+	}
+}
 
-    if($isAdmin == false) {
-      header('Location: ../request/');
-      die();
-    }
+
+// make Settings Icon
+function addSettingsIcon() {
+
+	if(editSettings() == true) {
+		// update Button
+		echo '<div id="d-settings">';
+		echo '  <i class="material-icons action-icon" id="settings-icon">settings_applications</i>';
+		echo '</div>';
+
+	}
+}
 
 ?>
 
@@ -60,9 +71,11 @@ session_start();
       </div>
 
       <!-- Update Button -->
-      <div id="d-update">
-          <input class="action-button" id="update-button" type="button" value="Update!" />
-      </div>
+      <?php addUpdateButton(); ?>
+
+      <!-- Settins Icon -->
+      <?php addSettingsIcon(); ?>
+
 
       <!-- Ceate Tabs -->
       <nav id="myTab" class="nav nav-pills nav-fill">
@@ -230,6 +243,13 @@ session_start();
         <script type="text/javascript">
             $("#formular-button").click(function(){
               window.location.href = "../request/";
+            });
+        </script>
+
+        <!-- on panel Button pressed -->
+        <script type="text/javascript">
+            $("#settings-icon").click(function(){
+              window.location.href = "../admin/settings.php";
             });
         </script>
 

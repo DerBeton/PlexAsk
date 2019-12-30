@@ -36,7 +36,7 @@ h3 {
   height: 40px;
   width: 7em;
   margin: 10px;
-  position: absolute;
+  position: fixed;
   border: none;
   border-radius: 10px;
 }
@@ -54,6 +54,19 @@ h3 {
 #update-button {
     right: 0;
     top: 0;
+}
+
+/* Style of Settings Icon */
+.action-icon {
+  position: fixed;
+}
+
+#settings-icon {
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    bottom: 0;
+    font-size: 35px;
 }
 
 /* navigation tabs */

@@ -273,6 +273,13 @@ span {
 
 }
 
+#seriesform {
+  margin-bottom: 0px;
+}
+
+#fcontactForm {
+  margin-bottom: 0px;
+}
 
 /* make the poster 100% */
 .poster {

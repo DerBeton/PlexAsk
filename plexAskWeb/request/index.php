@@ -6,12 +6,12 @@ ob_start();
 
 <?php
 
-if (!isset($_SESSION['userToken'])) {
+require "../functions/authCheck.php";
 
-  // now clean output
+if (accessForm() !== true) {
+	// now clean output
 	ob_end_clean();
   header('location: ../login');
-
 }
 
 $userToken = $_SESSION['userToken'];
@@ -36,9 +36,7 @@ if(!is_file("../data/.htaccess")){
 // make Admin button
 function addAdminButton() {
 
-	$config = json_decode(file_get_contents("../data/config.json"), true);
-
-	if(isset($config['admin']['email']) && strtolower($config['admin']['email']) == strtolower($_SESSION['userEmail'])) {
+	if(adminPanel() == true) {
 
 		// admin Button
 		echo '<div id="d-admin">';

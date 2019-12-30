@@ -1,0 +1,121 @@
+#d_pa_settings {
+	margin: 120px auto 50px auto;
+	max-width: 1000px;
+}
+
+#pa_settings {
+	border-radius: 10px;
+	background-color:
+	rgba(69, 87, 98, 0.5);
+	margin-top: 40px;
+	padding: 20px;
+}
+
+#panel-button {
+    top: 0;
+    left: 0;
+		position: fixed;
+}
+
+.pa_p_user-mail {
+    font-weight: normal;
+}
+
+/* user table */
+.d_users {
+    border-bottom: none;
+}
+
+tr {
+	border: none !important;
+}
+
+.pa_tbody th {
+	padding: 0 5px;
+}
+
+[type="checkbox"] + span:not(.lever)::before, [type="checkbox"]:not(.filled-in) + span:not(.lever)::after {
+    border: 1px solid white;
+    border-radius: 1px;
+}
+
+.sp_checkbox {
+    margin-left: 19%;
+}
+
+
+.pa_label {
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	width: auto;
+	margin-right: 20px;
+	clear: both;
+	display: flex;
+}
+
+.pa_input {
+  width: 98% !important;
+	border-radius: 5px !important;
+	height: 40px !important;
+	background-color: rgba(255,255,255,0.25) !important;
+	box-shadow: none !important;
+	border: none !important;
+	color: #fff !important;
+	padding-left: 10px !important;
+	font-size: small !important;
+}
+
+#pa_input_accounts {
+    width: 80% !important;
+}
+
+#pa_user_submit {
+    width: 17% !important;
+}
+
+/* Version Number*/
+
+.pa_p_version {
+    float: right;
+    color:
+    rgba(255, 255, 255, 0.8);
+}
+
+input[type="submit"], .pa_submit {
+    background-color: #e5a00d !important;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    height: 40px;
+    width: 99% !important;
+   	margin-top: 15px;
+}
+
+#pa_input_plex_port {
+    width: 25% !important;
+}
+
+#pa_input_plex_ip {
+    width: 70% !important;
+}
+
+.pa_input_span {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    width: auto;
+}
+
+/* sweet alert 2 */
+.swal2-title, .swal2-text, .swal2-content, .swal2-footer, .swal2-content__input {
+	color: white;
+}
+
+#swal2-content, #swal2-title {
+    color: white;
+}
+
+.pa_icon_delete {
+	cursor: pointer;
+}
